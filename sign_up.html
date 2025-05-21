@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="Styles/style_sign.css">
+    <link rel="stylesheet" href="Styles/main.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="form-container">
+            <h2>Create an Account</h2>
+            <form id = "sign_upform">
+                <div class="input-group-flex">
+                    <div class="input-group">
+                        <label for="name">First Name</label>
+                        <input type="text" id="Fname" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="name">Last Name</label>
+                        <input type="text" id="Lname" name="name" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" minlength="8" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit" class="btn-primary" id="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="sign_in.html">Sign In</a></p>
+        </div>
+    </div>
+      <div id="global-notification" class="notification hidden">
+        <div class="notification-content">
+            <span id="notification-message"></span>
+            <button class="notification-close">&times;</button>
+        </div>
+    </div>
+</body>
+<script type="module" src="Scripts/pages/sign_up.js" defer></script>
+<script type="module" src="firebase.js" defer></script>
+</html>

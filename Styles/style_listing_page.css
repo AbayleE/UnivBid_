@@ -1,0 +1,222 @@
+/* body {
+    background-color: var(--color-background);
+} */
+
+.body_right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 12%;
+    width: 75%;
+    height: 100vh;
+    color: var(--color-secondary);
+}
+
+.header_lp {
+    position: absolute;
+    left: 10%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 15%;
+    margin-top: var(--gap-base);
+}
+
+.header_lp_left {
+    display: flex;
+    flex-direction: column;
+}
+
+.header_lp_title {
+    color: var(--color-text-primary);
+}
+
+.header_lp_subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    font-family: var(--font-alternate);
+}
+
+
+#add_product_btn {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--gap-tiny);
+    width: 200px;
+    text-align: center;
+    padding: 16px;
+    opacity: 1;
+    border: none;
+    transition: opacity 1s ease;
+    cursor: pointer;
+}
+
+#add_product_btn:hover {
+    background-color: var(--color-accent-dark);
+}
+
+.product_dialog {
+    border: none;
+    border-radius: var(--gap-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    max-width: 600px;
+    height: 700px;
+    margin-top: var(--gap-large);
+    background-color: var(--color-background);
+    padding: var(--gap-base);
+    gap: var(--gap-large);
+
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
+}
+
+.add_product_input_cont {
+    position: relative;
+    background-color: var(--color-light-background);
+    border-radius: var(--gap-small);
+    padding: var(--gap-tiny);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-light);
+}
+
+.input_container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-large);
+    padding: var(--gap-small);
+    width: 400px;
+}
+
+.add_product_input_cont label {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-small);
+    margin-bottom: var(--gap-tiny);
+    height: 10px;
+}
+
+.add_product_input_cont input,
+.add_product_input_cont select,
+.add_product_input_cont textarea {
+    padding: var(--gap-tiny);
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size-small);
+    color: var(--color-accent-dark);
+    margin-top: var(--gap-tiny);
+}
+
+.add_product_input_cont input:focus,
+.add_product_input_cont select:focus,
+.add_product_input_cont textarea:focus {
+    border-bottom: 2px solid var(--color-light);
+}
+
+.button_div_cont {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    margin-top: var(--gap-small);
+    gap: var(--gap-small);
+}
+
+.button_div_cont button,
+.view-btn {
+    padding: var(--gap-small) var(--gap-base);
+    border-radius: var(--gap-small);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    transition: background-color 0.3s;
+}
+
+.button_div_cont button:hover {
+    background-color: var(--color-secondary);
+}
+
+
+#submit_btn {
+    background-color: var(--color-accent);
+}
+
+.product_card_list {
+    display: flex;
+    flex-direction: row;
+    margin: var(--gap-small) var(--gap-base);
+    background-color: var(--color-card-background, #f1f1f1);
+    padding: var(--gap-small) var(--gap-base);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 80px;
+    gap: var(--gap-tiny);
+    margin-left: 100px;
+}
+
+.product_card_list img {
+    width: 80px;
+    max-width: 80px;
+}
+
+
+.edit-btn,
+.delete-btn,
+.button_div button {
+    margin-top: var(--gap-small);
+    padding: var(--gap-small);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: 105px;
+    height: 40px;
+}
+
+.edit-btn,
+.yes_button {
+    background-color: var(--color-accent) !important;
+}
+
+.delete-btn,
+.no_button {
+    background-color: var(--color-tertiary) !important;
+}
+
+.delete_dialog {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: var(--gap-large);
+    gap: var(--gap-base);
+    border-radius: var(--border-radius);
+}
+
+.delete_dialog i {
+    text-align: right;
+    font-size: var(--font-size-medium);
+    margin-bottom: var(--gap-small);
+    cursor: pointer;
+}
+
+.button_div {
+    display: flex;
+    gap: var(--gap-base);
+}

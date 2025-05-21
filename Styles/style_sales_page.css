@@ -1,0 +1,157 @@
+/* body {
+  background-color: var(--color-light-background);
+} */
+
+.body_right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 80%;
+    height: 100vh;
+    color: var(--color-secondary);
+}
+
+.header_sales {
+    position: absolute;
+    left: 10%;
+    top: 2%;
+    margin-bottom: var(--gap-large);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    height: 10%;
+    margin-top: var(--gap-small);
+}
+
+ /* .header_sales_title {
+    font-size: var(--font-size-large);
+    color: var(--color-text-primary);
+}
+
+.header_sales_subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    font-family: var(--font-alternate);
+}   */
+
+
+.search_bar,
+.header_sales_right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-xxlarge);
+    padding: var(--gap-tiny);
+    margin-top: var(--gap-base);
+}
+
+.searchbar_element,
+.display_element {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-tiny);
+    width: auto;
+}
+
+.display_element{
+    gap:var(--gap-tiny);
+    color: var(--color-primary);
+}
+
+.display_element i{
+    font-size: var(--font-size-large);
+}
+
+.searchbar_element button,
+.display_element i {
+    padding: var(--gap-small);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+.searchbar_element input {
+    padding: var(--gap-small)var(--gap-base);
+    border: 1px solid var(--color-light);
+    border-radius: var(--gap-base);
+    border: 1px;
+    /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); */
+    background-color: var(--color-light-background);
+    width: 400px;
+}
+
+#search_btn{
+    background-color: var(--color-primary);
+    color: var(--color-background);
+}
+
+
+#search_btn:hover, 
+#display_element button:hover{
+    background-color: var(--color-accent-dark);
+    color: var(--color-background);
+}
+
+
+dialog::backdrop {
+    opacity: 60%;
+    background-color: var(--color-text-primary);
+}
+
+.add_product_input_cont {
+    position: relative;
+    background-color: var(--color-light-background);
+    border-radius: var(--gap-small);
+    padding: var(--gap-tiny);
+    display: flex;
+    flex-direction: column;
+    width: 45%;  
+}
+
+.input_container {
+    display: flex;
+    flex-wrap: wrap;  
+    gap: var(--gap-small); 
+    padding: var(--gap-base); 
+}
+
+.add_product_input_cont label {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-mediium);
+    margin-bottom: var(--gap-tiny);
+    font-weight: 500;
+}
+
+.add_product_input_cont input,
+.add_product_input_cont select,
+.add_product_input_cont textarea {
+    padding: var(--gap-tiny);
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size-small);
+    color: var(--color-accent-dark);
+    margin-top: var(--gap-tiny);
+}
+
+.add_product_input_cont input:focus,
+.add_product_input_cont select:focus,
+.add_product_input_cont textarea:focus{
+    border-bottom: 2px solid var(--color-light);
+} 
+
+
+
+
+
+

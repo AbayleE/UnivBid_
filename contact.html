@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="Styles/main.css">
+  <link rel="stylesheet" href="Styles/contact.css">
+
+
+</head>
+
+<body>
+  <nav class="main-header-nav">
+    <img src="../Images/logo.png" alt="UnivBid Logo" class="logo">
+    <div class="link-navbar">
+      <a href="#" aria-label="Home UnivBid">Home</a>
+      <a href="career.html" aria-label="Career Opportunities">Career</a>
+      <a href="#" aria-label="Blg">Blog</a>
+      <a href="#about" aria-label="About UnivBid">About</a>
+      <a href="contact.html" aria-label="Contact Us">Contact</a>
+      <button class="register_btn"> GET STARTED </button>
+    </div>
+  </nav>
+
+  <div id="main_content">
+
+    <div class="left_wrapper">
+      <div class="title">
+        <h1>Contact Us Form</h1>
+        <p>Need to get in touch with us? Either Fill out the form with your inquiry or find our social media feed below.
+        </p>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <h1>Get In Touch</h1>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="fc4f6852-5542-4678-b530-883ff502eb67">
+        <div class="input-fields">
+          <input type="text" class="input" name="name" placeholder="Name" required>
+          <input type="text" class="input" name="email" placeholder="Email Address" required>
+          <input type="text" class="input" name="phone" placeholder="Phone">
+          <textarea placeholder="Message" name="message" required class="input"></textarea>
+          <button class="send_btn" type="submit">Send</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <div id="image_background">
+    <img src="Images/12.png" alt="" width="250">
+
+  </div>
+
+  <div id="global-notification" class="notification hidden">
+    <div class="notification-content">
+      <span id="notification-message"></span>
+      <button class="notification-close">&times;</button>
+    </div>
+  </div>
+  
+</body>
+
+<script type="module" src="Scripts/pages/home_page.js" defer></script>
+<script type="module" src="firebase.js" defer></script>
+
+</html>
