@@ -3,32 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const body = document.body;
 
+    document.getElementById("add_product_btn").addEventListener("click", function () {
+        window.location.href = "create_auction.html";
+    });
+
+
     const content_left = document.createElement("div");
     content_left.classList.add("body_left");
-
-    const container_left = document.createElement("div");
-    container_left.classList.add("container_left");
-
-    const logo_container = document.createElement("div");
-    logo_container.classList.add("logo_container");
-
-    const logo_link = document.createElement("a");
-    logo_link.href = "index.html";
-    logo_link.style.cursor = "pointer";
-
-    const logo_img = document.createElement("img");
-    logo_img.src = "Images/logo.png";
-    logo_img.alt = "Logo";
-
-    logo_link.appendChild(logo_img);
-    logo_container.appendChild(logo_link);
 
     const pages_container = document.createElement("div");
     pages_container.classList.add("pages_container");
 
-    const pages = ["My Dashboard", "Product", "Product Sale", "Support", "Account", "Sign Out"];
-    const page_link = ["Dashboard.html","sales_page.html", "listing_page.html", "contact.html","#", "index.html"];
-    const icons = ["fa-chart-line", "fa-store", "fa-bell", "fa-headset", "fa-user", "fa-sign-out"];
+    const pages = ["Home","My Dashboard", "Product Sale", "Support", "Account", "Sign Out"];
+    const page_link = ["index.html","Dashboard.html", "sales_page.html", "contact.html", "profile.html", "index.html"];
+    const icons = ["fa-house","fa-chart-line", "fa-store", "fa-headset", "fa-user", "fa-sign-out"];
 
 
     pages.forEach((page, indx) => {
@@ -40,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const span_text = document.createElement("span");
         span_text.textContent = " " + page;
+       
 
         links.appendChild(icon);
         links.appendChild(span_text);
@@ -47,10 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    container_left.appendChild(logo_container);
-    container_left.appendChild(pages_container);
-
-    content_left.appendChild(container_left);
+    content_left.appendChild(pages_container);
     body.appendChild(content_left);
 
     // Content-Right
@@ -208,12 +194,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submit_container.append(submitButton);
 
-    form.append(name_container, email_container, phone_container, university_container, submit_container);
+    form.append(name_container, email_container, phone_container, university_container);
     profile_info_div.appendChild(form);
+    profile_info_div.appendChild( submit_container);
 
 
     card_container.appendChild(card_column);
     card_container.appendChild(profile_info_div);
+  
 
 
     content_right.appendChild(card_container);

@@ -1,87 +1,79 @@
-import {
-    auth,
-    db,
-    signOut,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    setDoc,
-    doc,
-    getDocs,
-    getDoc,
-    updateDoc,
-    collection,
-    query,
-    where
-} from "../../firebase.js";
-
-document.addEventListener("DOMContentLoaded", function () {
+import { Loaduserslistings } from '../components/ProductCard.js';
+import { ProfilePicture } from '../components/AuthModal.js';
 
 
-    async function get_item_sold(user_id) {
-        try {
-            const listing_collection = collection(db, "products");
-            const listing_query = query(listing_collection, 
-                where("soldBy", "==", user_id),
-                where ("status", "==", "sold")
-            );
-            const listing_snapshot = await getDocs(listing_query);
-    
-            if (listing_snapshot.empty) {
-                console.log("No items sold by this user.");
-                return;
-            }
-            let items = [];
-            listing_snapshot.forEach(doc => {
-                const data = doc.data();
-                if(data.status === "Available"){
-                    items.push(data);
-                    console.log(data); 
-                }
-            });
+document.addEventListener("DOMContentLoaded", async function () {
+    const body = document.body;
+    const add_product_btn = document.getElementById("add_product_btn");
+    const profile_picture = document.getElementById("profile_pic");
 
-            create_item_row(items);
-    
-        } catch (error) {
-            console.error("Error fetching sold items:", error);
-        }
-    }
+    document.getElementById("add_product_btn").addEventListener("click", function () {
+        window.location.href = "create_auction.html";
+    });
+ 
+        new ProfilePicture(profile_picture);
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            fetchuser_profile(user);
-        }
+
+    const body_left = document.createElement("div");
+    body_left.classList.add("body_left");
+
+    const pages_container = document.createElement("div");
+    pages_container.classList.add("pages_container");
+
+
+    const pages = ["Home", "My Dashboard", "Product Sale", "Support", "Account", "Sign Out"];
+    const page_link = ["index.html", "Dashboard.html", "sales_page.html", "contact.html", "profile.html", "index.html"];
+    const icons = ["fa-house", "fa-chart-line", "fa-store", "fa-headset", "fa-user", "fa-sign-out"];
+
+
+
+    pages.forEach((page, indx) => {
+        const links = document.createElement('a');
+        links.href = page_link[indx];
+
+        const icon = document.createElement("i");
+        icon.classList.add("fa-solid", icons[indx]);
+
+        const span_text = document.createElement("span");
+        span_text.textContent = " " + page;
+
+        links.appendChild(icon);
+        links.appendChild(span_text);
+        pages_container.appendChild(links);
     });
 
-    async function fetchuser_profile(user) {
-        try {
-            const docRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(docRef);
+    body_left.appendChild(pages_container);
+    body.appendChild(body_left);
 
-            if (docSnap.exists()) {
-                const userdata = docSnap.data();
-                const userProfile = userdata.avatar || "../Images/11.png";
-                const header_pic = document.getElementById("profile_pic");
-                if (header_pic) header_pic.src = userProfile;
-                console.log("User found");
-                get_item_sold(user.uid);
+    const body_right = document.createElement("div");
+    body_right.classList.add("body_right");
 
-            }
-        } catch (error) {
-            console.error("Error: ", error);
-        }
-    }
+    const header_lp = document.createElement("div");
+    header_lp.classList.add("header_lp");
 
-    const body = document.body;
-    const main_content = document.querySelector(".main_content");
-    if (main_content) {
-        body.appendChild(main_content);
-    }
-    
-    const main_title_overview = document.createElement("h1");
-    main_title_overview.innerText = "Overview";
-    main_title_overview.classList.add("header_title_h1");
-    main_content.appendChild(main_title_overview);
+    const header_lp_left = document.createElement("div");
+    header_lp_left.classList.add("header_lp_left");
+
+    const header_lp_title = document.createElement("h1");
+    header_lp_title.classList.add("header_lp_title");
+    header_lp_title.innerText = "Welcome Back";
+
+    const header_lp_subtitle = document.createElement("p");
+    header_lp_subtitle.classList.add("header_lp_subtitle");
+    header_lp_subtitle.innerText = "User";
+
+    header_lp_title.appendChild(header_lp_subtitle);
+    header_lp_left.appendChild(header_lp_title);
+    ;
+
+
+    header_lp.append(header_lp_left);
+    body_right.appendChild(header_lp);
+
+
+
+    const main_content = document.createElement("div");
+    main_content.classList.add("main_content");
 
     const content_box = document.createElement("div");
     content_box.classList.add("content_box");
@@ -159,47 +151,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     content_box.append(total_earnings, total_sold_items, total_bought_items);
     main_content.append(content_box);
-    const main_table_cont = document.createElement("div");
-    main_table_cont.classList.add("main_table_cont");
 
-    const title_overview = document.createElement("h2");
-    title_overview.innerText = "Earnings by Item";
-    title_overview.classList.add("title_overview");
-    main_table_cont.append(title_overview);
-    main_content.appendChild(main_table_cont);
+    body_right.appendChild(main_content);
+
+    const listing_board = document.createElement("div");
+    listing_board.classList.add("listing_board");
+
+    new Loaduserslistings(listing_board, add_product_btn, header_lp_subtitle, body);
+
+    body_right.appendChild(listing_board);
+    body.appendChild(body_right);
 
     //new userDashboardData( main_table_cont, display_sold_title, display_buy_value, display_earning_value);
 
-    function create_item_row(items) {
-        items.forEach(item => {
-            const item_card = document.createElement("div");
-            item_card.classList.add("item_row");
-
-            const item_name = document.createElement("span");
-            item_name.classList.add("item_name");
-            item_name.innerText = `${item.name}`;
-
-            const item_date = document.createElement("span");
-            item_date.classList.add("item_date");
-            const date = item.dateListed.toDate();
-            const formatted_date = date.toLocaleString("en-US", {
-                day: "numeric",
-                month: "short",
-                year: "numeric"
-            });
-            item_date.innerText = formatted_date;
-
-            const item_price = document.createElement("span");
-            item_price.classList.add("item_price");
-            item_price.innerText = ` $${item.price}`;
-
-            item_card.append(item_name, item_date, item_price);
-            main_table_cont.appendChild(item_card);
-
-        });
-    }
-
-
-
 });
-

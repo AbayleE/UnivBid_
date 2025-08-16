@@ -91,7 +91,7 @@ export const addNewProduct = async (productDetail) => {
       ...productDetail
     });
 
-    return { success: true , product:product };
+    return { success: true, product: product };
 
   } catch (error) {
     console.log("Failed to add product: ", error.message);
@@ -133,7 +133,7 @@ export const deleteProduct = async (pid) => {
 export const fetchProducts = async (UserID) => {
   try {
     const listings_list = collection(db, "products");
-     const listing_query = query(
+    const listing_query = query(
       listings_list,
       where("status", "==", "Available"),
       where("soldBy", "!=", UserID)
@@ -143,7 +143,6 @@ export const fetchProducts = async (UserID) => {
     const products = [];
 
     if (listings_snapshot.empty) {
-      console.log("No products found for this user.");
       return { success: true, products: null };
     } else {
       listings_snapshot.forEach(Docs => {
@@ -154,6 +153,26 @@ export const fetchProducts = async (UserID) => {
     }
     return { success: true, products: products };
 
+  } catch (error) {
+    console.log("Failed to fetch products from the db: ", error.message);
+    return { success: false, error: error.message };
+  }
+}
+
+export const fetchuser_profile = async () => {
+  try {
+    const user = auth.currentUser;
+    if (!user) throw new Error("No authenticated user");
+
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const userdata = docSnap.data();
+      const userProfile = userdata.avatar || "../Images/11.png";
+      return { success: true, profile_pic: userProfile };
+
+    }
   } catch (error) {
     console.log("Failed to fetch products from the db: ", error.message);
     return { success: false, error: error.message };

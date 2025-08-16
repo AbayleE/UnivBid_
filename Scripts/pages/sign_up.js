@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       const First_name = document.getElementById("Fname").value.trim();
       const Last_name = document.getElementById("Lname").value.trim();
       const email = document.getElementById("email").value.trim();
+      const university = document.getElementById("university").value.trim();
       const password = document.getElementById("password").value;
       const confirm_password = document.getElementById("confirm-password").value;
 
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         showNotification("Passwords do not match! Try Again", "error");
         return;
       }
-      new AddnewUser(First_name, Last_name, email, password, submitBtn);
+      new AddnewUser(First_name, Last_name, email, password,university, submitBtn);
 
     });
 

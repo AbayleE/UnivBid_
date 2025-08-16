@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    const cta_button = document.querySelector(".register_btn");
-    const search_button = document.querySelector(".search-btn");
+    // document.getElementById("add_product_btn").addEventListener("click", function () {
+    //     window.location.href = "create_auction.html";
+    // });
 
-    new AuthButton(cta_button, search_button);
+   
+    const cta_button = document.querySelector(".register_btn");
+    const browse_button = document.querySelector(".cta_browse");
+    const login_button = document.querySelector(".login_btn");
+    new AuthButton(cta_button, browse_button, login_button);
 
 });

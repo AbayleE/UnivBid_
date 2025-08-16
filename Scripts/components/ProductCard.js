@@ -3,6 +3,71 @@ import { getproductDetail, updateProductDetail, addNewProduct, deleteProduct, fe
 import { getCurrentuserdata } from '../services/auth.js';
 import { showNotification } from '../services/notifications.js';
 
+
+
+export class createListing {
+    constructor(productValue){
+        this.newProductval = productValue;
+        this.addnewProduct();
+    }
+    async addnewProduct(newProductval) {
+        try {
+            const currentUser = await getCurrentuserdata();
+            const result = await addNewProduct(this.newProductval);
+            if (!result.success) throw new Error(result.error || "Failed to update product");
+            
+            showNotification("Product added successfully!", 'success');
+        } catch (error) {
+            console.error("Failed to Add products: ", error);
+            showNotification(`Product Add Failed: ${error.message}`, 'error');
+        }
+    }
+};
+
+export class imageUpload {
+    constructor(image,imageURL) {
+        this.file = image;
+        this.imageURL = imageURL;
+        this.setup();
+    }
+
+
+    async setup() {
+        if (this.file) {
+            if (this.file.size > 307200) {
+                showNotification("File is too large! Please upload an image smaller than 300KB.");
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('file', this.file);
+            formData.append('upload_preset', 'unsigned_uploads');
+            formData.append('cloud_name', 'dn6sg7qiq');
+
+            try {
+                const response = await fetch('https://api.cloudinary.com/v1_1/dn6sg7qiq/image/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    const image_url = result.secure_url;
+                    console.log(image_url);
+                    this.imageURL = image_url;
+                    console.log("Image uploaded to Cloudinary:", image_url);
+                    return {image_url};
+                } else {
+                    console.error('Upload failed:', result.error.message);
+                }
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
+        }
+    }
+};
+
 export class Loaduserslistings {
     constructor(container, addBtn, header_title, body) {
         this.container = container;
@@ -252,7 +317,7 @@ export class Loaduserslistings {
         try {
             const result = await updateProductDetail(newProductval, pid);
             if (!result.success) throw new Error(result.error || "Failed to update product");
-            showNotification("Product updated successfully!",'success');
+            showNotification("Product updated successfully!", 'success');
             await this.DisplayListings();
 
         } catch (error) {
@@ -262,29 +327,29 @@ export class Loaduserslistings {
         }
     }
 
- async addnewProduct(newProductval, pid) {
-    try {
-        const currentUser = await getCurrentuserdata();
-        const result = await addNewProduct(newProductval, pid);
-        if (!result.success) throw new Error(result.error || "Failed to update product");
-         this.displayProducts(result.product);
-        //await this.DisplayListings();
-        showNotification("Product added successfully!",'success');
-    } catch (error) {
-        console.error("Failed to Add products: ", error);
-        showNotification(`Product Add Failed: ${error.message}` , 'error');
+    async addnewProduct(newProductval, pid) {
+        try {
+            const currentUser = await getCurrentuserdata();
+            const result = await addNewProduct(newProductval, pid);
+            if (!result.success) throw new Error(result.error || "Failed to update product");
+            this.displayProducts(result.product);
+            //await this.DisplayListings();
+            showNotification("Product added successfully!", 'success');
+        } catch (error) {
+            console.error("Failed to Add products: ", error);
+            showNotification(`Product Add Failed: ${error.message}`, 'error');
+        }
     }
-}
 
     async removeProduct(pid) {
         try {
             const result = await deleteProduct(pid);
             if (!result.success) throw new Error(result.error);
             await this.DisplayListings();
-            showNotification("Product deleted Successfully!",'success');
+            showNotification("Product deleted Successfully!", 'success');
         } catch (error) {
             console.error("Failed to delete products: ", error);
-            showNotification(`Removing Product Failed:${error.message} ` , 'error');
+            showNotification(`Removing Product Failed:${error.message} `, 'error');
         }
     }
 
@@ -417,9 +482,6 @@ export class Loaduserslistings {
     }
 
 
-
-
-
 }
 
 export class getallProducts {
@@ -468,13 +530,19 @@ export class getallProducts {
             const product_card = document.createElement("div");
             product_card.classList.add("product_card");
 
+            const img_div = document.createElement("div");
+            img_div.classList.add("img_div");
+
             const img = document.createElement("img");
             img.src = data.image || "../Images/11.png";
             img.alt = data.name || "Product Image";
-            product_card.appendChild(img);
 
-            const div_box = document.createElement("div");
-            div_box.classList.add("div_box");
+            //    img_div.appendChild(img);
+            img_div.style.setProperty('--bg-image', `url('${img.src}')`);
+            product_card.appendChild(img_div);
+
+            const products_info_div = document.createElement("div");
+            products_info_div.classList.add("products_info_div");
 
             const info_product = document.createElement("div");
             info_product.classList.add("info_product");
@@ -527,8 +595,8 @@ export class getallProducts {
             cta_buy_now.innerHTML = ' Buy';
             cta_buy_now.id = "buy_now";
 
-            div_box.append(info_product, cta_buy_now);
-            product_card.append(div_box);
+            products_info_div.append(info_product, cta_buy_now);
+            product_card.append(products_info_div);
 
             product_card.addEventListener("click", () => {
                 sessionStorage.setItem("selected_item", JSON.stringify(data));
@@ -542,8 +610,8 @@ export class getallProducts {
 
 };
 
-export class  userDashboardData{
-    constructor(container,sold,bought,earnings){
+export class userDashboardData {
+    constructor(container, sold, bought, earnings) {
         this.container = container;
         this.sold_items_count = sold;
         this.bought_items_count = bought;
@@ -551,7 +619,7 @@ export class  userDashboardData{
         this.setup();
     }
 
-    setup(){
+    setup() {
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 const result = await getCurrentuserdata();

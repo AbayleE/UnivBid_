@@ -24,9 +24,9 @@ export const handleCreateCheckout = async (req, res) => {
         quantity: 1,
       }],
       payment_intent_data: {
-        application_fee_amount: 100, // optional platform fee
+        application_fee_amount: 100, 
         transfer_data: {
-          destination: sellerStripeAccountId, // ← Pay the seller
+          destination: sellerStripeAccountId, 
         },
       },
       success_url: `${process.env.DOMAIN}/success.html`,

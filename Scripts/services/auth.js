@@ -38,7 +38,6 @@ export const logoutuser = async () => {
 };
 
 
-
 export const registerUser = async (First_name, Last_name, email, password, phone = "", university = "", avatar = "", contact_choice = {
     contact_email: true,
     contact_phone: false,

@@ -2,22 +2,25 @@ import { auth, onAuthStateChanged } from '../../firebase.js';
 import { getCurrentuserdata, logoutuser, registerUser, signinUser } from '../services/auth.js';
 import { updateuserProfile } from '../services/api.js';
 import { showNotification } from '../services/notifications.js';
+import { fetchuser_profile } from '../services/api.js';
 
 export class AuthButton {
-    constructor(btnElement, searchBtn) {
+    constructor(btnElement, searchBtn, loginBtn) {
         this.button = btnElement;
         this.searchBtn = searchBtn;
+        this.loginBtn = loginBtn;
         this.setup();
     }
 
-    setup() { 
+    setup() {
         this.button.innerText = "Sign Up";
-        onAuthStateChanged(auth, async(user) => {
-            if(user) {
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
                 await this.showlogout();
                 this.setSearchBtn(true);
-            }else{
+            } else {
                 this.showLogin();
+                this.showSignup();
                 this.setSearchBtn(false);
             }
         });
@@ -36,6 +39,8 @@ export class AuthButton {
     }
 
     async showlogout() {
+        this.loginBtn.style.visibility = "hidden";
+        this.loginBtn.remove();
         const userdata = await getCurrentuserdata();
         if (userdata) {
             this.button.innerText = `Logout, ${userdata.firstName || 'User'}`;
@@ -47,16 +52,26 @@ export class AuthButton {
 
     }
 
-    async showLogin() {
-        setInterval(() => {
-            this.button.classList.add("fadeout");
-            setTimeout(() => {
-                this.button.innerText = this.button.innerText === 'Sign Up' ? 'Login' : 'Sign Up';
-                this.button.classList.remove("fadeout");
-            }, 500);
-        }, 10000);
+    async showSignup() {
+        this.button.classList.add();
+        this.button.innerText = "Sign Up";
 
         this.button.onclick = () => {
+            window.location.href = 'sign_up.html';
+        }
+    }
+
+    async showLogin() {
+        this.loginBtn.innerText = "Sign In"
+        // setInterval(() => {
+        //     this.button.classList.add("fadeout");
+        //     setTimeout(() => {
+        //         this.button.innerText = this.button.innerText === 'Sign Up' ? 'Login' : 'Sign Up';
+        //         this.button.classList.remove("fadeout");
+        //     }, 500);
+        // }, 10000);
+
+        this.loginBtn.onclick = () => {
             window.location.href = 'sign_in.html';
         }
 
@@ -64,18 +79,19 @@ export class AuthButton {
 }
 
 export class AddnewUser {
-    constructor(First_name, Last_name, email, password, addBtn) {
+    constructor(First_name, Last_name, email, password,university, addBtn) {
         this.firstname = First_name;
         this.lastname = Last_name;
         this.email = email;
         this.password = password;
+        this.university = university
         this.registerUser();
     }
 
     async registerUser() {
-        const newUser = await registerUser(this.firstname, this.lastname, this.email, this.password);
+        const newUser = await registerUser(this.firstname, this.lastname, this.email, this.password, this.university);
         if (newUser.success) {
-            showNotification("User created successfully!" ,'success');
+            showNotification("User created successfully!", 'success');
             window.location.href = "sign_in.html";
         } else {
             const errorCode = newUser.error;
@@ -83,7 +99,7 @@ export class AddnewUser {
                 showNotification("Email Address Already Exists...");
                 window.location.href = "sign_in.html";
             } else {
-                showNotification(`User creation failed: ${ newUser.error} `,'error');
+                showNotification(`User creation failed: ${newUser.error} `, 'error');
             }
 
         }
@@ -117,9 +133,9 @@ export class SigninUser {
             } else {
                 const errorCode = signedUser.error;
                 if (errorCode === 'auth/invalid-credential') {
-                    showNotification(`Incorrect Password or Email `,'error');
+                    showNotification(`Incorrect Password or Email `, 'error');
                 } else {
-                    showNotification(`Sign-infailed: ${ signedUser.error} `,'error');
+                    showNotification(`Sign-infailed: ${signedUser.error} `, 'error');
                 }
             }
 
@@ -147,7 +163,7 @@ export class profileLoad {
         this.check_box_phone = check_box_phone;
         this.button = submitBtn;
         this.container = container;
-        this.checkAuthstate()
+        this.checkAuthstate();
         this.setup();
     }
 
@@ -156,7 +172,7 @@ export class profileLoad {
             if (user) {
                 this.loadProfileData();
             } else {
-               showNotification(`Please Login first! `,'error');
+                showNotification(`Please Login first! `, 'error');
                 window.location.href = "signin.html";
             }
         });
@@ -212,9 +228,9 @@ export class profileLoad {
             };
             const update_profile = await updateuserProfile(updatedDoc);
             if (update_profile.success) {
-                showNotification("Updated Profile Successfully",'success');
+                showNotification("Updated Profile Successfully", 'success');
             } else {
-                showNotification(`Profile Update Failed: ${update_profile.error} `,'error');
+                showNotification(`Profile Update Failed: ${update_profile.error} `, 'error');
             }
 
         } catch (error) {
@@ -223,4 +239,40 @@ export class profileLoad {
         }
 
     }
+}
+
+export class ProfilePicture {
+    constructor(ProfilePicture) {
+        this.ProfilePicture = ProfilePicture;
+        this.checkAuthstate()
+    }
+
+    checkAuthstate() {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.addProfilePicture();
+            } else {
+                showNotification(`Please Login first! `, 'error');
+                window.location.href = "signin.html";
+            }
+        });
+
+    }
+
+    
+    async addProfilePicture() {
+        if (!auth.currentUser) return;
+        try {
+            const Userdata = await fetchuser_profile();
+            if (Userdata) {
+                this.ProfilePicture= Userdata.profile_pic;
+            } else {
+                console.error("User Not found");
+            }
+        } catch (error) {
+            console.error("Failed to load profile:", error);
+        }
+
+    };
+
 }
