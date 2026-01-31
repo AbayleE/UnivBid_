@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In </title>
+    <link rel="stylesheet" href="Styles/style_sign.css">
+    <link rel="stylesheet" href="Styles/main.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="main-container">
+         <img src="../Images/logo-transparent_.png" alt="UnivBid Logo" class="logo">
+        <div class="form-container">
+            <h2>Welcome Back</h2>
+            <p style="margin-bottom: 24px; font-size:14px">Sign in to your account to start bidding and selling</p>
+
+            <form id="sign_inform">
+                <div class="input-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email"  placeholder=" 📧 abcdef@constructor.university" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"  placeholder="🔒 Password" required>
+                </div>
+                <button type="submit" class="btn-primary" id="submit">Sign In</button>
+            </form>
+
+            <div class="or-separator">
+                <span> Or continue with </span>
+            </div>
+
+            <button id="googleSignInBtn">
+                <i class="fab fa-google" style="color:white"></i> &nbsp; Sign in with Google
+            </button>
+
+            <p>Don't have an account? <a href="sign_up.html">Sign Up</a></p>
+        </div>
+    </div>
+
+
+    <div id="global-notification" class="notification hidden">
+        <div class="notification-content">
+            <span id="notification-message"></span>
+            <button class="notification-close">&times;</button>
+        </div>
+    </div>
+</body>
+
+<script type="module" src="Scripts/pages/sign_in.js" defer></script>
+<script type="module" src="firebase.js" defer></script>
+
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnivBid</title>
+    <link rel="stylesheet" href="Styles/main.css">
+    <link rel="stylesheet" href="Styles/style_home_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="main-header-nav">
+        <img src="../Images/logo-transparent_.png" alt="UnivBid Logo" class="logo">
+           <div class="search_bar">
+            <input type="text" name="search_input" placeholder="Search Auctions ..." />
+            <button id="search_btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        
+        <div class="link-navbar">
+            <a href="index.html" aria-label="Home UnivBid">Home</a>
+            <a href="career.html" aria-label="Career Opportunities">Career</a>
+            <a href="#about" aria-label="About UnivBid">About</a>
+            <a href="contact.html" aria-label="Contact Us">Contact</a>
+            <button class="register_btn"> </button>
+            <button class="login_btn"> </button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="main_section">
+            <div class="content_left">
+                <div class="text_content">
+                    <h1>The Ultimate Student Auction Platform</h1>
+                    <p>Buy and sell everything you need for university life. From textbooks to tech gadgets, find
+                        amazing deals and make some extra cash with our secure auction platform.</p>
+
+                </div>
+
+                <div class="CTA-block">
+                    <button class="cta_bidding"> Start Bidding → </button>
+                    <button class="cta_browse"> Browse Auction</button>
+                </div>
+
+                <div class="features-grid">
+
+                    <div class="feature_element">
+                        <div class="icon_container">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                style="background:rgb(186, 204, 225);padding: 10px; border-radius: 2px">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+
+                        <div class="feature_detail">
+                            <h3>Real-time Bidding</h3>
+                            <p>Live updates</p>
+                        </div>
+                    </div>
+
+                    <div class="feature_element">
+                        <div class="icon_container">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                style="background:rgb(186, 225, 203);padding: 10px; border-radius: 2px">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 3l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V7l8-4z" />
+                            </svg>
+                        </div>
+
+                        <div class="feature_detail">
+                            <h3>Secure Payments</h3>
+                            <p>Protected transactions</p>
+                        </div>
+                    </div>
+
+                    <div class="feature_element">
+                        <div class="icon_container">
+                            <svg class="icon text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor"
+                                style="background:rgb(250, 227, 186);padding: 10px; border-radius: 2px">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+
+                        <div class="feature_detail">
+                            <h3>24/7 Available</h3>
+                            <p> Always accessible</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="content_right"></div>
+
+        </div>
+
+
+        <section id="details_feature">
+            <div class="featured_products">
+                   <h1>Featured Products</h1>
+                   <p>Discover amazing deals on everything you need for university life</p>
+
+            </div>
+            <div class="features_block">
+                <h1>How <b>UnivBid</b> Works</h1>
+                <p>Getting started is easy! Follow these simple steps to begin buying and selling</p>
+
+
+                <div class="box">
+                    <div class="box_el">
+                        <i style="background:rgb(197, 198, 244); padding: 24px; border-radius: 5px; font-size: 20px ; display:flex ; align-items:center; justify-content:center"
+                            class="fa-solid fa-user-plus icon"></i>
+                        <p id="par">Sign Up</p>
+                        <small> Create Account with your University Account</small>
+
+                    </div>
+                    <hr style="border: 1px solid white;">
+
+                    <div class="box_el">
+                        <i style="background:rgb(197, 244, 235); padding: 24px; border-radius: 5px; font-size: 20px ; display:flex ; align-items:center; justify-content:center"
+                            class="fa-solid fa-plus icon"></i>
+                        <p id="par">List or Browse</p>
+                        <small> Create auctions or browse existing auctions</small>
+                    </div>
+                    <hr style="border: 1px solid white;">
+
+
+                    <div class="box_el">
+                        <i style="background:rgb(244, 214, 197); padding: 24px; border-radius: 5px; font-size: 20px ; display:flex ; align-items:center; justify-content:center"
+                            class="fa-solid fa-gavel icon"></i>
+                        <p id="par">Bid & Win</p>
+                        <small> Place bids and watch in real time</small>
+                    </div>
+                   <hr style="border: 1px solid white;">
+
+                    <div class="box_el">
+                        <i style="background:rgb(238, 197, 244); padding: 24px; border-radius: 5px; font-size: 20px ; display:flex ; align-items:center; justify-content:center"
+                            class="fa-regular fa-credit-card icon"></i>
+                        <p id="par">Secure Payment</p>
+                        <small> Comple transcation safely</small>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="features">
+                <div class="text_content">
+                    <h2>Platform Features</h2>
+                    <ul>
+                        <li><i class="fa fa-check"></i> List your items for auction with just a few clicks.</li>
+                        <li><i class="fa fa-check"></i> Place bids on items securely and in real-time.</li>
+                        <li><i class="fa fa-check"></i> Manage and monitor your auctions through a user-friendly
+                            dashboard.
+                        </li>
+                        <li><i class="fa fa-check"></i> All auctions are powered by Firebase for secure and real-time
+                            updates.</li>
+                        <li><i class="fa fa-check"></i> A clean, responsive interface built using HTML, CSS, and
+                            JavaScript.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="get_started">
+                <h2>Get Started with UnivBid</h2>
+                <p>Ready to join the UnivBid community? Signing up is easy, and you're just a few clicks away from
+                    creating
+                    your first auction or placing your first bid!</p>
+                <button class="sign_up_btn" onclick="window.location.href='sign_up.html'">Sign up Now</button>
+            </div>
+
+
+        </section>
+
+
+
+        <footer>
+            <div class="footer_container">
+
+                <div class="footer_top">
+                    <div class="footer_brand">
+                        <img src="../Images/logo-transparent_.png" alt="UnivBid Logo" width="100px">
+                        <p>The ultimate auction platform desigmed specifically for univeristy students. Buy, sell, and
+                            discover amazing deals within your campus community.</p>
+                        <ul class="f-menu">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="quick_link">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="sales_page.html">Browse Auctions</a></li>
+                            <li><a href="create_auction.html">Create Auction</a></li>
+                            <li><a href="index.html">How It Works</a></li>
+                            <li><a href="#">Categories</a></li>
+                            <li><a href="#">Popular Items</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="support">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Saftey Guidelines</a></li>
+                            <li><a href="#">Report an Issue</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="contact_us">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li>Email: univbid.contact@gmail.com</li>
+                            <li>Phone: +123 456 7890</li>
+                            <li>Address: Bremen, Germany</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="footer_bottom">
+                    <p>&copy; 2025 UnivBid | All rights reserved</p>
+                    <div class="policies">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+
+    </main>
+
+    <div id="global-notification" class="notification hidden">
+        <div class="notification-content">
+            <span id="notification-message"></span>
+            <button class="notification-close">&times;</button>
+        </div>
+    </div>
+
+</body>
+
+<script type="module" src="Scripts/pages/home_page.js" defer></script>
+<script type="module" src="firebase.js" defer></script>
+
+</html>

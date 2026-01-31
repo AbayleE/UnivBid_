@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnivBid</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="Styles/main.css">
+    <link rel="stylesheet" href="Styles/style_sales_page.css">
+
+</head>
+
+<body>
+
+    <nav class="main-header-nav">
+         <img src="../Images/logo-transparent_.png" alt="UnivBid Logo" class="logo">
+
+        <div class="search_bar">
+            <input type="text" name="search_input" placeholder="Search Auctions ..." />
+            <button id="search_btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        
+        <div class="link-navbar" id="loggedin_nav">
+            <button id="add_product_btn"> <big>+</big> &nbsp; Create Auction </button>
+            <i class="fa-solid fa-bell"></i>
+            <i class=" fa-solid fa-shopping-cart"></i>
+            <div class="profile_avatar_container">
+                <a href="profile.html"> <img src="Images/11.png" alt="" id="profile_pic"> </a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="global-notification" class="notification hidden">
+        <div class="notification-content">
+            <span id="notification-message"></span>
+            <button class="notification-close">&times;</button>
+        </div>
+    </div>
+</body>
+
+<script type="module" src="firebase.js" defer></script>
+<script type="module" src="Scripts/pages/sales_page.js" defer></script>
+
+</html>

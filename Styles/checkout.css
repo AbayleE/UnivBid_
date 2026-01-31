@@ -1,0 +1,71 @@
+body {
+    background-color: var(--color-light-background);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .contact-container {
+    background-color: var(--color-background);
+    padding: var(--gap-base);
+    margin-top: 200px;
+    border-radius: var(--gap-small);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    margin-top: var(--gap-tiny);
+    margin-bottom: var(--gap-base);
+    text-align: center;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--gap-base);
+  }
+
+  .product-info img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: var(--gap-small);
+    border-radius: var(--gap-tiny);
+  }
+
+  .contact-form label {
+    display: block;
+    margin: var(--gap-small)0  var(--gap-tiny);
+    font-size: var(--font-size-small);
+    color: var(--color-text-primary);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: var(--gap-tiny);
+    margin-bottom: var(--gap-small);
+    border: 1px solid #ccc;
+    border-radius: var(--gap-tiny);
+}
+
+  .contact-form button {
+    width: 100%;
+    padding: var(--gap-small);
+    background-color: var( --color-accent);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius:var(--gap-tiny);
+    cursor: pointer;
+
+  }
+
+  .contact-form button:hover {
+    background-color: #218838;
+  }

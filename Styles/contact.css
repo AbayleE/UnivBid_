@@ -1,0 +1,112 @@
+body {
+    background-color: var(--color-light-background);
+}
+
+#main_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: var(--gap-large);
+    padding: 0 var(--gap-large); 
+}
+
+.left_wrapper {
+    position: absolute;
+    left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: var(--gap-large);
+    width: 500px;
+    transition: all 0.3s;
+}
+
+.left_wrapper:hover{
+    transform: translateY(-20px);
+}
+
+
+#image_background {
+    position: absolute;
+    opacity: 0.2;
+    left: 5%;
+    top: 40%;
+    z-index: -1;
+}
+
+.wrapper {
+    position: absolute;
+    left: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6%;
+    padding: var(--gap-base);
+    width: 500px; 
+    height: 70vh;
+    border-radius: 0 var(--gap-base) 0 var(--gap-base);
+    box-shadow: 2px 2px 10px hsl(0, 0%, 0% , 0.2);
+}
+
+.wrapper h1{
+    color: var(--color-primary);
+    font-size: var(--font-size-xlarge);
+}
+
+.title h1{
+    margin-bottom: var(--gap-small);
+    color: var(--color-primary);
+    font-size: var(--font-size-xxlarge);
+}
+
+.contact-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    width: 100%;
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    margin-right: var(--gap-base);
+    width: 100%;
+    max-width: 300px;
+}
+
+
+#msg {
+    width: 400px; 
+}
+
+
+.input-fields .input,
+.msg textarea {
+    margin: var(--gap-small) 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--color-dark);
+    padding: var(--gap-small);
+    color: var(--color-text-primary);
+    width: 100%;
+    outline: none;
+    font-size: var(--font-size-small); 
+}
+
+.send_btn {
+    color: var(--color-background);
+    text-align: center;
+    padding: 16px;
+    border-radius: var(--gap-tiny);
+    border: none;
+    background-color: var(--color-accent-dark);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    margin-top: var(--gap-base);
+}
+  
